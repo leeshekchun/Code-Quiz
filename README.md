@@ -1,7 +1,7 @@
 # Code-Quiz
 
 ## Criteria:
-GIVEN I am taking a code quiz 
+GIVEN I am taking a code quiz...
 1. WHEN I click the start button, THEN a timer starts and I am presented with a question
 2. WHEN I answer a question, THEN I am presented with another question
 3. WHEN I answer a question incorrectly, THEN time is subtracted from the clock
