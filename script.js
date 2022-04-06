@@ -51,6 +51,7 @@ function countdown() {
   };
 
 
+//Question One
 
 // buttons for question one
 var ques1 = function () {
@@ -75,18 +76,23 @@ var ques1 = function () {
         buttonP1Container.appendChild(buttonP1Ans4);
 
         // if buttonP1Ans2 is clicked, it will show correct and jump to next page
-<<<<<<< HEAD
           document.querySelector("#btnP1Correct").addEventListener("click", ques2)
 };   
         // if else button is clicked, it will show incorrect
           document.querySelector("").addEventListener("click", )
-=======
-        if (buttonP1An2)
-        document.getElementById("btnP1Correct").addEventListener("click", ques2)
-        // if else button is clicked, it will show incorrect
-}
->>>>>>> 39b035ded5688658d9e72c055350c0bb48d6a878
 
+
+
+// Question Two
+
+// buttons for question two
 var ques2 = function () {
 
+}
+
+// Question Three
+
+// buttons for question three
+var ques3 = function () {
+  
 }
