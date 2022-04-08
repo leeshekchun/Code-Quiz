@@ -1,3 +1,7 @@
+// "Start-Quiz button"
+var startquizBtn = document.getElementById(Start);
+
+
 // Question 01
 var set0 ={
   question: "How many toes does a chicken feet have?",
@@ -18,6 +22,12 @@ var set2 ={
   options: ["150", "175", "195", "210"],
 };
 // answer: 195
+
+var allQuestion = [set0.question, set1.question, set2.question]
+
+
+// Score display
+var score = 0;
 
 
 // insert timer
@@ -51,48 +61,50 @@ function countdown() {
   };
 
 
-//Question One
+
 
 // buttons for question one
 var ques1 = function () {
+
+//question div
+var quesBox = document.createElement("textarea");
+
+
   //answer buttons container
-    var buttonP1Container = document.createElement("div");
-    buttonP1Container.className = "buttonP1";
-    buttonP1Container.id = "buttonP1.taskid";
+    var buttonContainer = document.createElement("div");
+    buttonContainer.className = "button1";
+    buttonContainer.id = "button.taskid";
     //answer buttons
-      var buttonP1Ans1 = document.createElement("button");
-      buttonP1Ans1.textContent = "Three"
-      var buttonP1Ans2 = document.createElement("button");
-      buttonP1Ans2.textContent = "Four"
-      buttonP1Ans2.Id = "btnP1Correct"
-      var buttonP1Ans3 = document.createElement("button");
-      buttonP1Ans3.textContent = "Five"
-      var buttonP1Ans4 = document.createElement("button");
-      buttonP1Ans4.textContent = "Six"
+      var buttonAns1 = document.createElement("button");
+      buttonAns1.textContent = "Three"
+      var buttonAns2 = document.createElement("button");
+      buttonAns2.textContent = "Four"
+      buttonAns2.Id = "btnP1Correct"
+      var buttonAns3 = document.createElement("button");
+      buttonAns3.textContent = "Five"
+      var buttonAns4 = document.createElement("button");
+      buttonAns4.textContent = "Six"
       //appendChild button buttonP1Container div
-        buttonP1Container.appendChild(buttonP1Ans1);
-        buttonP1Container.appendChild(buttonP1Ans2);
-        buttonP1Container.appendChild(buttonP1Ans3);
-        buttonP1Container.appendChild(buttonP1Ans4);
+        buttonContainer.appendChild(buttonAns1);
+        buttonContainer.appendChild(buttonAns2);
+        buttonContainer.appendChild(buttonAns3);
+        buttonContainer.appendChild(buttonAns4);
 
         // if buttonP1Ans2 is clicked, it will show correct and jump to next page
-          document.querySelector("#btnP1Correct").addEventListener("click", ques2)
-};   
+        if (buttonP1An2)
+        document.getElementById("btnP1Correct").addEventListener("click", ques2)
         // if else button is clicked, it will show incorrect
-          document.querySelector("").addEventListener("click", )
+};
 
-
-
-// Question Two
-
-// buttons for question two
 var ques2 = function () {
 
+};
+
+// After clicking on the "start quiz" button, function to start question
+$("startquizBtn").click(function(allQuestion)) {
+for (let i=0,; i < allQuestion.length; i++) {
+  if (allQuestion[0]);
+  $("ques1").show(function(){})
 }
 
-// Question Three
-
-// buttons for question three
-var ques3 = function () {
-  
 }
