@@ -245,8 +245,8 @@ document.getElementById("card-footer").appendChild(result);
 var finish = document.createElement("div");
 var finishTitle = document.createElement("h3");
 var finalScore = document.createElement("p");
-var initial = document.createElement("p");
-var initialInput = document.createElement("textarea");
+var nameid = document.createElement("p");
+var nameidInput = document.createElement("textarea");
 var submitBtn = document.createElement("button");
 
 function endingFunction() {
@@ -254,7 +254,7 @@ finish.id = "finished";
 finishTitle.innerText = "All Done!";
 finalScore.innerText = `Your final score is ${score}`;
 // finalScore.innerText = "Your final score is: " + score 
-initial.innerText = "Enter initials:";
+nameid.innerText = "Enter initials:";
 submitBtn.innerHTML = "Submit";
 submitBtn.className = "btn";
 submitBtn.onclick = function(){};
@@ -268,8 +268,8 @@ endingFunction();
 document.getElementById("wrapper-2").appendChild(finish);
 document.getElementById("finished").appendChild(finishTitle);
 document.getElementById("wrapper-2").appendChild(finalScore);
-document.getElementById("wrapper-2").appendChild(inital);
-document.getElementById("wrapper-2").appendChild(initalInput);
+document.getElementById("wrapper-2").appendChild(nameid);
+document.getElementById("wrapper-2").appendChild(nameidInput);
 document.getElementById("wrapper-2").appendChild(submitBtn);
 } 
 
