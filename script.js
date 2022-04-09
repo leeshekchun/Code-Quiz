@@ -1,97 +1,140 @@
-
-// Score display
+// Global Variable
 var score = 0;
+var progress = 0;
+var timeLeft = 75;
 
-  document.getElementById("Start").addEventListener("click", startquiz);
-  function startquiz(timeEl) {
-      document.getElementById("wrapper-2").innerHTML = "<div class='card-header'>test</div>";
-      clearInterval(countdown());
+
+var result = document.createElement("h3");
+result.innerText = ""
+
+var footer = document.createElement("div");
+footer.id = "card-footer";
+footer.className = "card-footer";
+
+// When Startquiz button is clicked
+document.getElementById("Start").addEventListener("click", startquiz);
+  
+
+// startquiz function
+  function startquiz() {
+      timeLeft = 75;
+       countdown();
+       clearHTML();
+       addQuestions();
+       addContainerBtn();
+       addAnswers();
   };
 
 // insert timer
 var timerEl = document.getElementById('TimerEl');
 function countdown() {
-    var timeLeft = 75;
   
-    // TODO: Add a comment describing the functionality of the setInterval() method:
     var timeInterval = setInterval(function () {
       // TODO: Add comments describing the functionality of the `if` statement:
       if (timeLeft > 1) {
         TimerEl.textContent = 'Time: ' + timeLeft;
-        timeLeft--;
+        timeLeft-=1;
       } // TODO: Add comments describing the functionality of the `else if` statement:
       else if (timeLeft === 1) {
         TimerEl.textContent = 'Time: ' + timeLeft;
-        timeLeft--;
+        timeLeft-=1;
       } // TODO: Add comments describing the functionality of the `else` statement:
-      else {
-        TimerEl.textContent = '';
-        clearInterval(timeInterval);
+      else if (timeLeft < 1) {
+        TimerEl.textContent = 'Times up';
+        timeLeft-=1;
+        // clearInterval(timeInterval);
         // displayMessage();
+      }
+        else if (timeLeft < -4 ) {
+        startquiz();
       }
     }, 1000);
   }
-  countdown();
+  
 
-// Question 01
-var set0 ={
-  question: "How many toes does a chicken feet have?",
-  options: ["Three", "Four", "Five", "Six"],
-};
+var answer1 = ""
+var answer2 = ""
+var answer3 = ""
+var answer4 = ""
+
+var question1 = document.createElement("h2")
+question1.innerText = "How many toes does a chicken feet have?";
+
 // answer: Four
 
-// question 02
-var set1 ={
-  question: "Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby?",
-  options: ["Mr. Bigger", "Mrs. Bigger", "their baby", "You"],
-};
+
+var question2 = document.createElement("h2")
+question2.innerText = "Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby?";
 // answer: their baby
 
 //question 03
-var set2 ={
-  question: "How many countries in the world?",
-  options: ["150", "175", "195", "210"],
-};
+
+//   options: ["150", "175", "195", "210"],
+// };
+var question3 = document.createElement("h2")
+question3.innerText = "How many countries in the world?";
+
 // answer: 195
 
-var allQuestion = [set0.question, set1.question, set2.question];
-var allOptions = [options[0], options[1], options[2], options[3]];
-
-// options div
-for (let i = 0; i < allOptions.length; i++) {
-var buttonAns1 = allOptions[0];
-console.log(buttonAns1);
-var buttonAns2 = allOption[1];
-var buttonAns3 = allOption[2];
-var buttonAns4 = allOption[3];
-}
-
-//question div
-for (let i = 0; i < allQuestion.length; i++) {
-var quesBox = document.createElement("textarea");
-quesBox.textContent = allQuestion[i];
-console.log(quesBox.textContent)
-}
 
   //answer buttons container
+  function addContainerBtn() {
+  document.getElementById("card-body").appendChild(buttonContainer);
+  }
     var buttonContainer = document.createElement("div");
     buttonContainer.className = "button1";
     buttonContainer.id = "button.taskid";
     //answer buttons
       var buttonAns1 = document.createElement("button");
-      buttonAns1.textContent = allOptions[0]
+      // buttonAns1.textContent = allOptions[0]
+      buttonAns1.className = "btn"
+      buttonAns1.id = "Ans1"
+      buttonAns1.onclick = function(){
+      keepScore1();
+      displayResult();
+      trackprogress();
+      addQuestions();
+      addAnswers();
+     }
       console.log(buttonAns1.textContent)
 
       var buttonAns2 = document.createElement("button");
-      buttonAns2.textContent = allOptions[1]
+      // buttonAns2.textContent = allOptions[1]
+      buttonAns2.className = "btn"
+      buttonAns2.id = "Ans2"
+      buttonAns2.onclick = function(){
+      keepScore2();
+      displayResult();
+      trackprogress();
+      addQuestions();
+      addAnswers();
+      }
       console.log(buttonAns2.textContent)
 
       var buttonAns3 = document.createElement("button");
-      buttonAns3.textContent = allOptions[2]
+      // buttonAns3.textContent = allOptions[2]
+      buttonAns3.className = "btn"
+      buttonAns3.id = "Ans3"
+      buttonAns3.onclick = function(){
+      keepScore3();
+      displayResult();
+      trackprogress();
+      addQuestions();
+      addAnswers();
+      }
       console.log(buttonAns3.textContent)
 
       var buttonAns4 = document.createElement("button");
-      buttonAns4.textContent = allOptions[3]
+      // buttonAns4.textContent = allOptions[3]
+      buttonAns4.className = "btn"
+      buttonAns4.id = "Ans4"
+      buttonAns4.onclick = function(){
+      keepScore4();
+      displayResult();
+      trackprogress();
+      addQuestions();      
+      addAnswers();
+      }
       console.log(buttonAns4.textContent)
 
       //appendChild button buttonP1Container div
@@ -101,13 +144,132 @@ console.log(quesBox.textContent)
         buttonContainer.appendChild(buttonAns4);
 
 
+function clearHTML() {
+  document.getElementById("card-body").innerHTML = ""
+  document.getElementById("wrapper-2").innerHTML = ""
+}
 
-// footer for answer result        
-var footer = document.createElement("div");
-footer.id = "card-footer";
-footer.className = "card-footer";
-footer.textContent = ""
+function addQuestions() {
+  document.getElementById("wrapper-2").innerHTML = ""
+  if (progress == 0) {
+    document.getElementById("wrapper-2").appendChild(question1);
+  }
+  else if (progress == 1) {
+    document.getElementById("wrapper-2").appendChild(question2);
+  }
+  else if (progress == 2) {
+    document.getElementById("wrapper-2").appendChild(question3);
+  }
+  else if (progress > 2){
+  document.getElementById("wrapper-2").innerHTML = ""
+  }
+  };
+
+  function addAnswers() {
+    if (progress == 0) {
+      answer1 = "Three"
+      answer2 = "Four"
+      answer3 = "Five"
+      answer4 = "Six"
+    }
+    else if (progress == 1) {
+      answer1 = "Mr. Bigger"
+      answer2 = "Mrs. Bigger"
+      answer3 = "Their baby"
+      answer4 = "You"
+    }
+    else if (progress == 2) {
+      answer1 = "150"
+      answer2 = "175"
+      answer3 = "195"
+      answer4 = "210"
+    }
+    else if (progress > 2) {
+      document.getElementById("card-body").innerHTML = "";
+      allDone()
+    }
+    document.getElementById("Ans1").innerHTML = answer1
+    document.getElementById("Ans2").innerHTML = answer2
+    document.getElementById("Ans3").innerHTML = answer3
+    document.getElementById("Ans4").innerHTML = answer4
+  }
+function trackprogress() {
+  progress += 1
+  if (progress > 2) {
+  }
+};
+
+function keepScore1() {
+    timeLeft -= 10
+    result.innerText = "Wrong!"
+  }
 
 
+function keepScore2() {
+  if (progress == 0) {
+    score += 1
+    result.innerText = "Correct!"
+    return score
+  }  
+  else if (progress != 0) {
+timeLeft -= 10
+result.innerText = "Wrong!"
+  }
+}
 
+
+function keepScore3() {
+  if (progress == 1, 2) {
+    score += 1
+    result.innerText = "Correct!"
+    return score
+  }
+  else if (progress == 0) {
+    timeLeft -= 10
+    result.innerText = "Wrong!"
+}
+}
+
+
+function keepScore4() {
+    timeLeft -= 10
+    result.innerText = "Wrong!"
+}
+
+// 
+function displayResult() {
+document.getElementById("card").appendChild(footer);
+document.getElementById("card-footer").appendChild(result);
+}
+
+var finish = document.createElement("div");
+var finishTitle = document.createElement("h3");
+var finalScore = document.createElement("p");
+var initial = document.createElement("p");
+var initialInput = document.createElement("textarea");
+var submitBtn = document.createElement("button");
+
+function endingFunction() {
+finish.id = "finished";
+finishTitle.innerText = "All Done!";
+finalScore.innerText = `Your final score is ${score}`;
+// finalScore.innerText = "Your final score is: " + score 
+initial.innerText = "Enter initials:";
+submitBtn.innerHTML = "Submit";
+submitBtn.className = "btn";
+submitBtn.onclick = function(){};
+};
+
+// After all the questions is answered
+function allDone() {
+document.getElementById("wrapper-2").innerHTML = ""
+document.getElementById("card-body").innerHTML = ""
+endingFunction();
+document.getElementById("wrapper-2").appendChild(finish);
+document.getElementById("finished").appendChild(finishTitle);
+document.getElementById("wrapper-2").appendChild(finalScore);
+document.getElementById("wrapper-2").appendChild(inital);
+document.getElementById("wrapper-2").appendChild(initalInput);
+document.getElementById("wrapper-2").appendChild(submitBtn);
+} 
 
