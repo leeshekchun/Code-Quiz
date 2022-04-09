@@ -43,7 +43,7 @@ var set0 ={
 // question 02
 var set1 ={
   question: "Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby?",
-  options: ["Mr. Bigger", "Mrs. Bigger", "their baby"],
+  options: ["Mr. Bigger", "Mrs. Bigger", "their baby", "You"],
 };
 // answer: their baby
 
@@ -55,17 +55,22 @@ var set2 ={
 // answer: 195
 
 var allQuestion = [set0.question, set1.question, set2.question];
-var allOptions = [set0.options[i], set1.options[i], set3.options[i]];
+var allOptions = [options[0], options[1], options[2], options[3]];
 
 // options div
 for (let i = 0; i < allOptions.length; i++) {
-
+var buttonAns1 = allOptions[0];
+console.log(buttonAns1);
+var buttonAns2 = allOption[1];
+var buttonAns3 = allOption[2];
+var buttonAns4 = allOption[3];
 }
 
 //question div
 for (let i = 0; i < allQuestion.length; i++) {
 var quesBox = document.createElement("textarea");
 quesBox.textContent = allQuestion[i];
+console.log(quesBox.textContent)
 }
 
   //answer buttons container
@@ -74,18 +79,27 @@ quesBox.textContent = allQuestion[i];
     buttonContainer.id = "button.taskid";
     //answer buttons
       var buttonAns1 = document.createElement("button");
-      buttonAns1.textContent = ""
+      buttonAns1.textContent = allOptions[0]
+      console.log(buttonAns1.textContent)
+
       var buttonAns2 = document.createElement("button");
-      buttonAns2.textContent = ""
+      buttonAns2.textContent = allOptions[1]
+      console.log(buttonAns2.textContent)
+
       var buttonAns3 = document.createElement("button");
-      buttonAns3.textContent = ""
+      buttonAns3.textContent = allOptions[2]
+      console.log(buttonAns3.textContent)
+
       var buttonAns4 = document.createElement("button");
-      buttonAns4.textContent = ""
+      buttonAns4.textContent = allOptions[3]
+      console.log(buttonAns4.textContent)
+
       //appendChild button buttonP1Container div
         buttonContainer.appendChild(buttonAns1);
         buttonContainer.appendChild(buttonAns2);
         buttonContainer.appendChild(buttonAns3);
         buttonContainer.appendChild(buttonAns4);
+
 
 
 // footer for answer result        
