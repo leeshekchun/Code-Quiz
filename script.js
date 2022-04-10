@@ -13,7 +13,9 @@ footer.className = "card-footer";
 
 // When Startquiz button is clicked
 document.getElementById("Start").addEventListener("click", startquiz);
-  
+
+// view high score
+document.getElementById("viewhighscore").addEventListener("click", lastpage);
 
 // startquiz function
   function startquiz() {
@@ -291,6 +293,7 @@ document.getElementById("wrapper-2").appendChild(submitBtn);
 
 // Last page high scores 
 var highScore = document.createElement("div")
+highScore.id = "highscorediv"
 var highScoretext = document.createElement("h3")
 highScoretext.innerText = "High Scores"
 var nameidTextbox = document.createElement("ol")
@@ -308,8 +311,12 @@ highestScore.innerHTML = Object.entries(localStorage)[0];
 // Last page variables
 var gobackBtn = document.createElement("button")
 gobackBtn.innerHTML = "Go Back"
+gobackBtn.className = "btn"
+gobackBtn.id = "gobackbtn"
 var clearHighscoreBtn = document.createElement("button")
 clearHighscoreBtn.innerHTML = "Clear high scores"
+clearHighscoreBtn.className = "btn"
+clearHighscoreBtn.id = "clearhighscore"
 
 
 // Last page
@@ -321,7 +328,6 @@ document.getElementById("wrapper-2").appendChild(highScoretext);
 document.getElementById("wrapper-2").appendChild(nameidTextbox);
 document.getElementById("wrapper-2").appendChild(gobackBtn);
 document.getElementById("wrapper-2").appendChild(clearHighscoreBtn);
-
 document.getElementById("list").appendChild(highestScore);
 // document.getElementById("list").appendChild(secondHighest);
 // document.getElementById("list").appendChild(thirdHighest);
