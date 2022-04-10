@@ -1,11 +1,9 @@
 # Code-Quiz
 
-## Criteria:
-GIVEN I am taking a code quiz...
-1. WHEN I click the start button, THEN a timer starts and I am presented with a question
-2. WHEN I answer a question, THEN I am presented with another question
-3. WHEN I answer a question incorrectly, THEN time is subtracted from the clock
-4. WHEN all questions are answered or the timer reaches 0, THEN the game is over
-5. WHEN the game is over, THEN I can save my initials and score
+## In order to find the highest score, the quiz needs to be tested twice.
 
-<img width="633" alt="Screen Shot 2022-04-03 at 4 32 02 PM" src="https://user-images.githubusercontent.com/99776016/161451551-30304ba3-32d7-48d1-ba88-0b3aebacdaed.png">
+
+<img width="915" alt="Screen Shot 2022-04-10 at 10 07 03 AM" src="https://user-images.githubusercontent.com/99776016/162637132-6477bec6-b067-461b-bfad-c2bff40fb6aa.png">
+<img width="886" alt="Screen Shot 2022-04-10 at 10 07 23 AM" src="https://user-images.githubusercontent.com/99776016/162637136-b1c9f14f-3de5-462b-b33a-b24ab981a244.png">
+<img width="816" alt="Screen Shot 2022-04-10 at 10 07 42 AM" src="https://user-images.githubusercontent.com/99776016/162637139-0c20282a-5df2-47d8-82f6-d9cc2012bc45.png">
+<img width="813" alt="Screen Shot 2022-04-10 at 10 08 12 AM" src="https://user-images.githubusercontent.com/99776016/162637141-cc90b883-09f8-40b8-81a0-5233be764c17.png">
