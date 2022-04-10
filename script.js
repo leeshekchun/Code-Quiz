@@ -30,20 +30,18 @@ var timerEl = document.getElementById('TimerEl');
 function countdown() {
   
     var timeInterval = setInterval(function () {
-      // TODO: Add comments describing the functionality of the `if` statement:
+      
       if (timeLeft > 1) {
         TimerEl.textContent = 'Time: ' + timeLeft;
         timeLeft-=1;
-      } // TODO: Add comments describing the functionality of the `else if` statement:
+      } 
       else if (timeLeft === 1) {
         TimerEl.textContent = 'Time: ' + timeLeft;
         timeLeft-=1;
-      } // TODO: Add comments describing the functionality of the `else` statement:
+      } 
       else if (timeLeft < 1) {
         TimerEl.textContent = 'Times up';
         timeLeft-=1;
-        // clearInterval(timeInterval);
-        // displayMessage();
       }
         else if (timeLeft < -4 ) {
         startquiz();
@@ -51,30 +49,23 @@ function countdown() {
     }, 1000);
   }
   
-
+// answers variable
 var answer1 = ""
 var answer2 = ""
 var answer3 = ""
 var answer4 = ""
 
+
+// questions variable
 var question1 = document.createElement("h2")
 question1.innerText = "How many toes does a chicken feet have?";
-
-// answer: Four
 
 
 var question2 = document.createElement("h2")
 question2.innerText = "Who is bigger, Mr. Bigger, Mrs. Bigger, or their baby?";
-// answer: their baby
 
-//question 03
-
-//   options: ["150", "175", "195", "210"],
-// };
 var question3 = document.createElement("h2")
 question3.innerText = "How many countries in the world?";
-
-// answer: 195
 
 
   //answer buttons container
@@ -144,11 +135,14 @@ question3.innerText = "How many countries in the world?";
         buttonContainer.appendChild(buttonAns4);
 
 
+// function to clear the whole page
 function clearHTML() {
   document.getElementById("card-body").innerHTML = ""
   document.getElementById("wrapper-2").innerHTML = ""
 }
 
+
+// each questions
 function addQuestions() {
   document.getElementById("wrapper-2").innerHTML = ""
   if (progress == 0) {
@@ -165,6 +159,7 @@ function addQuestions() {
   }
   };
 
+  // Answers for each questions
   function addAnswers() {
     if (progress == 0) {
       answer1 = "Three"
@@ -183,22 +178,29 @@ function addQuestions() {
       answer2 = "175"
       answer3 = "195"
       answer4 = "210"
-    }
+    }    
+    
     else if (progress > 2) {
       document.getElementById("card-body").innerHTML = "";
       allDone()
     }
+    if (progress <= 2) {
     document.getElementById("Ans1").innerHTML = answer1
     document.getElementById("Ans2").innerHTML = answer2
     document.getElementById("Ans3").innerHTML = answer3
     document.getElementById("Ans4").innerHTML = answer4
   }
+}
+
+// track which question is answering
 function trackprogress() {
   progress += 1
   if (progress > 2) {
   }
 };
 
+
+// If answer wrong, it will deduct 10 seconds and show result as wrong!
 function keepScore1() {
     timeLeft -= 10
     result.innerText = "Wrong!"
@@ -230,13 +232,14 @@ function keepScore3() {
 }
 }
 
-
 function keepScore4() {
     timeLeft -= 10
     result.innerText = "Wrong!"
 }
 
-// 
+
+
+// All done page
 function displayResult() {
 document.getElementById("card").appendChild(footer);
 document.getElementById("card-footer").appendChild(result);
@@ -255,9 +258,21 @@ finishTitle.innerText = "All Done!";
 finalScore.innerText = `Your final score is ${score}`;
 // finalScore.innerText = "Your final score is: " + score 
 nameid.innerText = "Enter initials:";
+nameidInput.id = "initial";
 submitBtn.innerHTML = "Submit";
 submitBtn.className = "btn";
-submitBtn.onclick = function(){};
+
+submitBtn.onclick = function(){
+
+var person = document.getElementById("initial").value
+
+localStorage.setItem(person, score);
+console.log(localStorage);
+
+lastpage();
+};
+
+
 };
 
 // After all the questions is answered
@@ -273,3 +288,52 @@ document.getElementById("wrapper-2").appendChild(nameidInput);
 document.getElementById("wrapper-2").appendChild(submitBtn);
 } 
 
+
+// Last page high scores 
+var highScore = document.createElement("div")
+var highScoretext = document.createElement("h3")
+highScoretext.innerText = "High Scores"
+var nameidTextbox = document.createElement("ol")
+nameidTextbox.id = "list"
+var highestScore = document.createElement("li")
+
+// Highest score
+highestScore.innerHTML = Object.entries(localStorage)[0];
+// Second highest score
+// secondHighest.innerHTML = Object.entries(localStorage)[1];
+// // Third highest score
+// thirdHighest.innerHTML = Object.entries(localStorage)[2];
+
+
+// Last page variables
+var gobackBtn = document.createElement("button")
+gobackBtn.innerHTML = "Go Back"
+var clearHighscoreBtn = document.createElement("button")
+clearHighscoreBtn.innerHTML = "Clear high scores"
+
+
+// Last page
+function lastpage() {
+document.getElementById("wrapper-2").innerHTML = ""
+document.getElementById("card-body").innerHTML = ""
+
+document.getElementById("wrapper-2").appendChild(highScoretext);
+document.getElementById("wrapper-2").appendChild(nameidTextbox);
+document.getElementById("wrapper-2").appendChild(gobackBtn);
+document.getElementById("wrapper-2").appendChild(clearHighscoreBtn);
+
+document.getElementById("list").appendChild(highestScore);
+// document.getElementById("list").appendChild(secondHighest);
+// document.getElementById("list").appendChild(thirdHighest);
+}
+
+// go back button function
+gobackBtn.onclick = function() {
+  startquiz();
+};
+
+// clear high score fuunction
+clearHighscoreBtn.onclick = function() {
+  localStorage.clear();
+  // nameidTextbox.innerHTML = "";
+};
