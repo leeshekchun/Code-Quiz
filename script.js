@@ -27,29 +27,31 @@ document.getElementById("viewhighscore").addEventListener("click", lastpage);
        addAnswers();
   };
 
+var timeInterval;
 // insert timer
 var timerEl = document.getElementById('TimerEl');
 function countdown() {
-  
-    var timeInterval = setInterval(function () {
-      
+
+timeInterval = setInterval(function () {
+
       if (timeLeft > 1) {
-        TimerEl.textContent = 'Time: ' + timeLeft;
-        timeLeft-=1;
-      } 
+          timerEl.textContent = 'Time: ' + timeLeft;
+          timeLeft -= 1;
+      }
       else if (timeLeft === 1) {
-        TimerEl.textContent = 'Time: ' + timeLeft;
-        timeLeft-=1;
-      } 
+          timerEl.textContent = 'Time: ' + timeLeft;
+          timeLeft -= 1;
+      }
       else if (timeLeft < 1) {
-        TimerEl.textContent = 'Times up';
-        timeLeft-=1;
+          timerEl.textContent = 'Times up';
+          timeLeft -= 1;
       }
-        else if (timeLeft < -4 ) {
-        startquiz();
+      else if (timeLeft < -4) {
+          clearInterval(timeInterval);
+          startquiz();
       }
-    }, 1000);
-  }
+  }, 1000);
+}
   
 // answers variable
 var answer1 = ""
@@ -197,7 +199,8 @@ function addQuestions() {
 // track which question is answering
 function trackprogress() {
   progress += 1
-  if (progress > 2) {
+  if (progress > 2) 
+  { clearInterval(timeInterval);
   }
 };
 
@@ -223,7 +226,7 @@ result.innerText = "Wrong!"
 
 
 function keepScore3() {
-  if (progress == 1, 2) {
+  if (progress == 1 || progress == 2) {
     score += 1
     result.innerText = "Correct!"
     return score
@@ -277,6 +280,7 @@ lastpage();
 
 };
 
+
 // After all the questions is answered
 function allDone() {
 document.getElementById("wrapper-2").innerHTML = ""
@@ -288,6 +292,8 @@ document.getElementById("wrapper-2").appendChild(finalScore);
 document.getElementById("wrapper-2").appendChild(nameid);
 document.getElementById("wrapper-2").appendChild(nameidInput);
 document.getElementById("wrapper-2").appendChild(submitBtn);
+
+
 } 
 
 
@@ -303,9 +309,9 @@ var highestScore = document.createElement("li")
 // Highest score
 highestScore.innerHTML = Object.entries(localStorage)[0];
 // Second highest score
-// secondHighest.innerHTML = Object.entries(localStorage)[1];
-// // Third highest score
-// thirdHighest.innerHTML = Object.entries(localStorage)[2];
+secondHighest.innerHTML = Object.entries(localStorage)[1];
+// Third highest score
+thirdHighest.innerHTML = Object.entries(localStorage)[2];
 
 
 // Last page variables
@@ -329,15 +335,20 @@ document.getElementById("wrapper-2").appendChild(nameidTextbox);
 document.getElementById("wrapper-2").appendChild(gobackBtn);
 document.getElementById("wrapper-2").appendChild(clearHighscoreBtn);
 document.getElementById("list").appendChild(highestScore);
-// document.getElementById("list").appendChild(secondHighest);
-// document.getElementById("list").appendChild(thirdHighest);
+document.getElementById("list").appendChild(secondHighest);
+document.getElementById("list").appendChild(thirdHighest);
 }
 
 // go back button function
 gobackBtn.onclick = function() {
+  progress = 0
   startquiz();
 };
 
+function stopTimer() {
+    clearIntervaltimeInterval
+    timeInterval = null;
+};
 // clear high score fuunction
 clearHighscoreBtn.onclick = function() {
   localStorage.clear();
